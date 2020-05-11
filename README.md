@@ -76,9 +76,10 @@ root
                   |__ Header.js
                   |__ Footer.js
             |__ Home.js
-            |__ ItemCreate.js
-            |__ ItemDetail.js
-            |__ ItemEdit.js
+            |__ UserCreate.js
+            |__ ResturantCreate.js
+            |__ ResturantDetail.js
+            |__ ResturantEdit.js
             |__ masterList.js
             |__ SignIn.js
             |__ SignUp.js
