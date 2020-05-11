@@ -41,7 +41,7 @@ Model
 The homepage will have will have sign up and login prompts to allow users to create and secure personal accounts. For users without a sign in, the homepage will show a cumulative list panel of all the registered restaurants.
 The item page will display a particular restaurant that had been added to the master list as well as allow the user to update current information.
 Patrons will be able to view and save restaurants to their account.  They will not be able to add, update, or delete restaurants.
-The app will utilize React, JS, Ruby, CSS, and mongoDB. React, Ruby, and JS will render data stored on our development api created with mongoDB. The site would be hosted on Surge.
+The app will utilize React, JS, Ruby on Rails, and CSS. React, Ruby, and JS will render data stored on a created development api that meets RESTful standatds. The site would be hosted on Surge or Netlify.
 
 ### Libraries
 
@@ -69,12 +69,14 @@ root
       |__ application_controller.rb
       |__ authentication_controller.rb
       |__ users_controller.rb
-      |__ resturants_controller.rb
+      |__ restaurants_controller.rb
+      |__ patrons_controller.rb
 |__ jobs/
 |__ mailers/
 |__ models/
       |__ user.rb
-      |__ resturants.rb
+      |__ restaurants.rb
+      |__ patrons.rb
 |__ views/
 |__ src/
       |__ components/
@@ -83,6 +85,9 @@ root
                   |__ Footer.js
             |__ Home.js
             |__ UserCreate.js
+            |__ User.js
+            |__ PatronCreate.js
+            |__ Patron.js
             |__ restaurantCreate.js
             |__ restaurantDetail.js
             |__ restaurantEdit.js
@@ -115,4 +120,4 @@ root
 ### Post-MVP
 
 **Yes, We're Open** 
-Post-MVP allows the user to distinguish between carry-out and delivery. 
+Post-MVP has a checkbox that allows the user to distinguish between carry-out,delivery (Possibly contactless delivery and carry-out). 
