@@ -29,6 +29,7 @@ Desktop Edit Item Page
 ![](https://i.imgur.com/w6F1ztX.png)
 
 erd
+![](https://i.imgur.com/4w5ZBn8.png)
 
 Model
 ![](https://i.imgur.com/GfuxKl2.png)
