@@ -17,7 +17,7 @@ Mobile Create Item Page
 ![](https://imgur.com/0mS0RwH.png)
 
 Mobile Patron Page
-![](https://i.imgur.com/qecskp9.png)
+![](https://i.imgur.com/KxaZ9CV.png)
 
 Desktop Landing Page
 ![](https://i.imgur.com/GiNoRHY.png)
@@ -28,10 +28,10 @@ Desktop Log In Page
 
 
 Desktop Edit Item Page
-![](https://i.imgur.com/w6F1ztX.png)
+![](https://i.imgur.com/ykn0sis.png)
 
 erd
-![](https://i.imgur.com/4w5ZBn8.png)
+![](https://i.imgur.com/GW4tqaZ.png)
 
 Model
 ![](https://i.imgur.com/GfuxKl2.png)
@@ -70,7 +70,7 @@ root
       |__ authentication_controller.rb
       |__ users_controller.rb
       |__ restaurants_controller.rb
-      |__ patrons_controller.rb
+      |__ category_controller.rb
 |__ jobs/
 |__ mailers/
 |__ models/
