@@ -28,6 +28,8 @@ Desktop Log In Page
 Desktop Edit Item Page
 ![](https://i.imgur.com/w6F1ztX.png)
 
+erd
+
 Model
 ![](https://i.imgur.com/GfuxKl2.png)
 
@@ -47,7 +49,7 @@ The app will utilize React, JS, Ruby, CSS, and mongoDB. React, Ruby, and JS will
 |     express      | _Web framework for node_         |
 |  framer-motion   | _Page transitions_               |
 |       jest       | _JavaScript testing_             |
-|     mongoose     | _MongoDB object modeling tool_   |
+|     rails        | _rails for db_                   |
 |      morgan      | _HTTP request logger middleware_ |
 |     nodemon      | _Auto restart app on save_       |
 | react-router-dom | _Link and Route components_      |
