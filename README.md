@@ -35,7 +35,7 @@ Model
 
 The homepage will have will have sign up and login prompts to allow users to create and secure personal accounts. For users without a sign in, the homepage will show a cumulative list panel of all the registered resturants.
 The item page will display a particular resturant that had been added to the master list as well as allow the user to update current information.
-The app will utilize React, JS, CSS, and mongoDB. React and JS will render data stored on our development api created with mongoDB. The site would be hosted on Surge.
+The app will utilize React, JS, Ruby, CSS, and mongoDB. React, Ruby, and JS will render data stored on our development api created with mongoDB. The site would be hosted on Surge.
 
 ### Libraries
 
@@ -111,4 +111,6 @@ root
 
 ### Post-MVP
 
-**Yes, We're Open** allows the user to distinguish between carry-out and delivery. 
+**Yes, We're Open** 
+Post-MVP allows the user to distinguish between carry-out and delivery. 
+Will allow users not affiliated with a resturant create an account and save their favorites.
