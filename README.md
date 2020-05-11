@@ -120,4 +120,5 @@ root
 ### Post-MVP
 
 **Yes, We're Open** 
-Post-MVP has a checkbox that allows the user to distinguish between carry-out,delivery (Possibly contactless delivery and carry-out). 
+Post-MVP has a checkbox that allows the user to distinguish between carry-out,delivery (Possibly contact-less delivery and carry-out). 
+Post-MVP has a search function for Patrons
