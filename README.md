@@ -1,6 +1,6 @@
 # yes-were-open
 ### Overview
-Yes, we're open is a web app that will allow small resturants and business owners advertise to the public that they are open for business during this trying time.
+Yes, we're open is a web app that will allow small restaurants and business owners advertise to the public that they are open for business during this trying time.
 
 
 ### Wireframes
@@ -16,6 +16,8 @@ Mobile Log In Page
 Mobile Create Item Page
 ![](https://imgur.com/0mS0RwH.png)
 
+Mobile Patron Page
+![](https://i.imgur.com/qecskp9.png)
 
 Desktop Landing Page
 ![](https://i.imgur.com/GiNoRHY.png)
@@ -36,8 +38,9 @@ Model
 
 ### MVP Goals
 
-The homepage will have will have sign up and login prompts to allow users to create and secure personal accounts. For users without a sign in, the homepage will show a cumulative list panel of all the registered resturants.
-The item page will display a particular resturant that had been added to the master list as well as allow the user to update current information.
+The homepage will have will have sign up and login prompts to allow users to create and secure personal accounts. For users without a sign in, the homepage will show a cumulative list panel of all the registered restaurants.
+The item page will display a particular restaurant that had been added to the master list as well as allow the user to update current information.
+Patrons will be able to view and save restaurants to their account.  They will not be able to add, update, or delete restaurants.
 The app will utilize React, JS, Ruby, CSS, and mongoDB. React, Ruby, and JS will render data stored on our development api created with mongoDB. The site would be hosted on Surge.
 
 ### Libraries
@@ -80,9 +83,9 @@ root
                   |__ Footer.js
             |__ Home.js
             |__ UserCreate.js
-            |__ ResturantCreate.js
-            |__ ResturantDetail.js
-            |__ ResturantEdit.js
+            |__ restaurantCreate.js
+            |__ restaurantDetail.js
+            |__ restaurantEdit.js
             |__ masterList.js
             |__ SignIn.js
             |__ SignUp.js
@@ -113,4 +116,4 @@ root
 
 **Yes, We're Open** 
 Post-MVP allows the user to distinguish between carry-out and delivery. 
-Will allow users not affiliated with a resturant create an account and save their favorites.
+Will allow users not affiliated with a restaurant create an account and save their favorites.
