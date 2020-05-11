@@ -51,7 +51,6 @@ The app will utilize React, JS, Ruby, CSS, and mongoDB. React, Ruby, and JS will
 |      morgan      | _HTTP request logger middleware_ |
 |     nodemon      | _Auto restart app on save_       |
 | react-router-dom | _Link and Route components_      |
-|    supertest     | _Component library_              |
 
 ### Component Hierarchy
 
