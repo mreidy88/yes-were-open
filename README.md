@@ -116,4 +116,3 @@ root
 
 **Yes, We're Open** 
 Post-MVP allows the user to distinguish between carry-out and delivery. 
-Will allow users not affiliated with a restaurant create an account and save their favorites.
