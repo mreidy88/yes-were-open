@@ -57,10 +57,20 @@ The app will utilize React, JS, Ruby, CSS, and mongoDB. React, Ruby, and JS will
 ```structure
 
 root
-|__ client/
-      |__ public/
-            |__ index.html
-      |__ src/
+|__ channels/
+|__ controllers/
+      |__ 
+      |__ application_controller.rb
+      |__ authentication_controller.rb
+      |__ users_controller.rb
+      |__ resturants_controller.rb
+|__ jobs/
+|__ mailers/
+|__ models/
+      |__ user.rb
+      |__ resturants.rb
+|__ views/
+|__ src/
       |__ components/
             |__ shared/
                   |__ Header.js
@@ -80,19 +90,10 @@ root
             |__ README.md
             |__ package-lock.json
             |__ package.json
-|__ controllers/
-      |__ 
-      |__ application_controller.rb
-      |__ authentication_controller.rb
-      |__ users_controller.rb
-      |__ resturants_controller.rb
 |__ db/
       |__ migrate
       |__ schema
       |__ seeds
-|__ models/
-      |__ user.rb
-      |__ resturants.rb
 |__ routes/
       |__ routes.rb
 |__ .gitignore
