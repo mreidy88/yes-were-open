@@ -95,16 +95,12 @@ root
       |__ resturants.rb
 |__ routes/
       |__ routes.rb
-|__ tests/
-      |__ base.test.js
-      |__ routes.test.js
 |__ .gitignore
 |__ app.js
 |__ info.yml
 |__ package-lock.json
 |__ package.json
 |__ README.md
-|__ server.js
 
 ```
 
