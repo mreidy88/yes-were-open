@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { Route, Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
+import Login from './components/Login'
+import Register from './components/Register'
+import {
+  createUser,
+  readAllUsers,
+  updateUser,
+  destroyUser,
+  loginUser,
+  registerUser,
+  verifyUser
+} from './services/api-helper'
+import Header from './components/Header';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: [],
+      userForm: {
+        name: "",
+        photo: ""
+      },
+      currentUser: null,
+      authFormData: {
+        username: "",
+        email: "",
+        password: ""
+      }
+    };
+  }
+
+  async componentDidMount() {
+
+    
+  }
+
+  render() {
+    return (
+      <div>
+        
+      </div>
+    )
+  }
 }
-
-export default App;
