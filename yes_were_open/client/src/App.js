@@ -148,12 +148,12 @@ export default class App extends Component {
           handleLogout={this.handleLogout}
           currentUser={this.state.currentUser}
         />
-        <Route exact path="/login" render={() => (
+        <Route exact path="./Components/login" render={() => (
           <Login
             handleLogin={this.handleLogin}
             handleChange={this.authHandleChange}
             formData={this.state.authFormData} />)} />
-        <Route exact path="/register" render={() => (
+        <Route exact path="./Components/register" render={() => (
           <Register
             handleRegister={this.handleRegister}
             handleChange={this.authHandleChange}

@@ -3,142 +3,54 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   movies = Movie.create([{ category: 'Star Wars' }, { category: 'Lord of the Rings' }])
+#   Character.create(category: 'Luke', movie: movies.first)
 
-category.create (
-    [
-        {
-        category: "American" 
-        },
-        {
-        category: "Asian"
-        },
-        {
-        category: "BBQ"
-        },
-        {
-        category: "Bar"
-        },
-        {    
-        category: "Bagels"
-        },
-           {           
-        category: "Bakery"
-        },
-           {
-        category: "Bowls"
-        },
-           {
-        category: "Breakfast"
-        },
-           {
-        category: "Cafe"
-        },
-           {
-        category: "Cakes"
-        },
-           {
-        category: "Caribbean"
-        },
-           {
-        category: "Chicken"
-        },
-           {
-        category: "Coffee and Tea"
-        },
-           {
-        category: "Crepes"
-        },
-           {
-        category: "Deli"
-        },
-           {
-        category: "Dessert"
-        },
-           {
-        category: "Diner"
-        },
-           {
-        category: "Fresh Fruits"
-        },
-           {
-        category: "Grill"
-        },
-           {
-        category: "Hamburgers"
-        },
-           {
-        category: "Healthy"
-        },
-           {
-        category: "Latin American"
-        },
-           {
-        category: "Mediterranean"
-        },
-           {
-        category: "Mexican"
-        },
-           {
-        category: "Noodles"
-        },
-           {
-        category: "Pasta"
-        },
-           {
-        category: "Pizza"
-        },
-           {
-        category: "Ribs"
-        },
-           {
-        category: "Salads"
-        },
-           {
-        category: "Sandwiches"
-        },
-           {
-        category: "Seafood"
-        },
-           {
-        category: "Shakes"
-        },
-           {
-        category: "Smoothies"
-        },
-           {
-        category: "Juices"
-        },
-           {
-        category: "Snacks"
-        },
-           {
-        category: "Soup" 
-        },
-           {
-        category: "Steak" 
-        },
-           {
-        category: "Subs"
-        },
-           {
-        category: "Tacos" 
-        },
-           {
-        category: "Vegan"
-        },
-           {
-        category: "Vegetarian"
-        },
-           {
-        category: "Waffles" 
-        },
-           {
-        category: "Wings"
-        },
-           {
-        category: "Wraps"
-        }
-    ]
-)
+american = Category.create(category: "American")
+asian = Category.create(category: "Asian")
+bbq = Category.create(category: "BBQ")
+bar = Category.create(category: "Bar")
+bagles = Category.create(category: "Bagels")
+bakery = Category.create(category: "Bakery")
+bowls = Category.create(category: "Bowls")
+breakfast = Category.create(category: "Breakfast")
+cafe = Category.create(category: "Cafe")
+cakes = Category.create(category: "Cakes")
+caribbean = Category.create(category: "Caribbean")
+chicken = Category.create(category: "Chicken")
+coffee_tea = Category.create(category: "Coffee and Tea")
+crepes = Category.create(category: "Crepes")
+deli = Category.create(category: "Deli")
+dessert = Category.create(category: "Dessert")
+
+diner = Category.create(category: "Diner")
+fresh_fruits = Category.create(category: "Fresh Fruits")
+grill = Category.create(category: "Grill")
+hamburgers = Category.create(category: "Hamburgers")
+healthy = Category.create(category: "Healthy")
+latin_american = Category.create(category: "Latin American")
+mediterranean = Category.create(category: "Mediterranean")
+mexican = Category.create(category: "Mexican")
+noodles = Category.create(category: "Noodles")
+pasta = Category.create(category: "Pasta")
+pizza = Category.create(category: "Pizza")
+ribs = Category.create(category: "Ribs")
+salads = Category.create(category: "Salads")
+sandwiches = Category.create(category: "Sandwiches")
+seafood = Category.create(category: "Seafood")
+shakes = Category.create(category: "Shakes")
+
+smoothies = Category.create(category: "Smoothies")
+juices = Category.create(category: "Juices")
+snacks = Category.create(category: "Snacks")
+soup = Category.create(category: "Soup")
+steak = Category.create(category: "Steak")
+subs = Category.create(category: "Subs")
+tacos = Category.create(category: "Tacos")
+vegan = Category.create(category: "Vegan")
+vegetarian = Category.create(category: "Vegetarian")
+waffles = Category.create(category: "Waffles")
+wings = Category.create(category: "Wings")
+wraps = Category.create(category: "Wraps")
+
+p "#{Category.count} categories created"
