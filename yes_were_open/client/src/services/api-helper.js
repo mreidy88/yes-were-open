@@ -30,6 +30,10 @@ export const verifyUser = async () => {
   return false
 }
 
+export const removeToken = () => {
+  api.defaults.headers.common.authorization = null;
+}
+
 export const createUser = async (data) => {
   const resp = await api.post('/users', { user: data })
   return resp.data
