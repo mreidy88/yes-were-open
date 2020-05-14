@@ -12,8 +12,10 @@ import {
   registerUser,
   verifyUser,
   removeToken
-} from './services/api-helper'
+} from './services/api-helper';
 import Header from './Components/Header';
+import { getAllRestaurants } from './services/api-helper'
+
 
 export default class App extends Component {
   constructor(props) {
@@ -29,12 +31,14 @@ export default class App extends Component {
         username: "",
         email: "",
         password: ""
-      }
+      },
+      restaurants: []
     };
     
   }
   componentDidMount() {
     this.confirmUser();
+    this.readAllRestaurants();
   }
 
   handleLogin = async (loginData) => {
@@ -54,11 +58,14 @@ export default class App extends Component {
 
   handleLogout = () => {
     localStorage.clear();
-    this.setState({
-      currentUser: null
-    })
+    this.setState({ currentUser: null })
     removeToken();
     this.props.history.push('/');
+  }
+
+  readAllRestaurants = async () => {
+    const restaurants = await getAllRestaurants();
+    this.setState({ restaurants })
   }
 
 
@@ -70,7 +77,7 @@ export default class App extends Component {
           currentUser={this.state.currentUser}
         />
         <Login
-          handleLigin={this.handleLogin}
+          handleLogin={this.handleLogin}
           handleLogin={this.handleLogin}
         />
         <Register
