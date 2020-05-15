@@ -1,57 +1,114 @@
-import React, { Component } from 'react'
+ import React, { Component } from 'react';
 
-export default class Register extends Component {
-  state = {
-    username: '',
-    email: '',
-    password: ''
+import { loginUser, registerUser } from '../services/user';
+
+class Register extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      username: '',
+      email: '',
+      password: '',
+      passwordConfirmation: '',
+      isError: false,
+      errorMsg: '',
+    };
   }
 
-  handleChange = (e) => {
-    const { name, value } = e.target;
+  handleChange = (event) =>
     this.setState({
-      [name]: value
+      [event.target.name]: event.target.value,
+      isError: false,
+      errorMsg: '',
     });
-  }
+
+  onRegisterUser = (event) => {
+    event.preventDefault();
+
+    const { history, setUser } = this.props;
+
+    registerUser(this.state)
+      .then(() => loginUser(this.state))
+      .then((res) => setUser(res.user))
+      .then(() => history.push('/items'))
+      .catch((error) => {
+        console.error(error);
+        this.setState({
+          email: '',
+          password: '',
+          passwordConfirmation: '',
+          isError: true,
+          errorMsg: 'Sign Up Details Invalid',
+        });
+      });
+  };
+
+  renderError = () => {
+    const toggleForm = this.state.isError ? 'danger' : '';
+    if (this.state.isError) {
+      return (
+        <button type="submit" className={toggleForm}>
+          {this.state.errorMsg}
+        </button>
+      );
+    } else {
+      return (
+        <button className="register-button" type="submit">
+          Register
+        </button>
+      );
+    }
+  };
 
   render() {
-    const { username, email, password } = this.state;
+    const { email, username, password, passwordConfirmation } = this.state;
+
     return (
-      <form onSubmit={(e) => {
-        e.preventDefault();
-        this.props.handleRegister(this.state);
-        this.props.history.push('/');
-      }}>
+        <div className = 'registering'>
         <h3>Register</h3>
-        <label htmlFor="username">username:</label>
-        <input
-          id="username"
-          type="text"
-          name="username"
-          value={username}
-          onChange={this.handleChange}
-        />
-        <br />
-        <label htmlFor="email">email:</label>
-        <input
-          id="email"
-          type="text"
-          name="email"
-          value={email}
-          onChange={this.handleChange}
-        />
-        <br />
-        <label htmlFor="password">password:</label>
-        <input
-          id="password"
-          type="password"
-          name="password"
-          value={password}
-          onChange={this.handleChange}
-        />
-        <br />
-        <button>Submit</button>
-      </form>
-    )
+        <form onSubmit={this.onSignUp}>
+          <label>Username</label>
+          <input
+            required
+            type="text"
+            name="username"
+            value={username}
+            placeholder="Enter username"
+            onChange={this.handleChange}
+          />
+          <label>Email address</label>
+          <input
+            required
+            type="email"
+            name="email"
+            value={email}
+            placeholder="Enter email"
+            onChange={this.handleChange}
+          />
+          <label>Password</label>
+          <input
+            required
+            name="password"
+            value={password}
+            type="password"
+            placeholder="Password"
+            onChange={this.handleChange}
+          />
+          <label>Password Confirmation</label>
+          <input
+            required
+            name="passwordConfirmation"
+            value={passwordConfirmation}
+            type="password"
+            placeholder="Confirm Password"
+            onChange={this.handleChange}
+          />
+          {this.renderError()}
+        </form>
+      </div>
+    );
   }
 }
+
+export default Register;

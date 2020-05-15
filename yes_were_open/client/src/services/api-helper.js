@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const baseUrl = 'http://localhost:3000'
-
+// https://git.heroku.com/yes-were-open-api.git
 const api = axios.create({
   baseURL: baseUrl
 })
@@ -39,13 +39,8 @@ export const createUser = async (data) => {
   return resp.data
 }
 
-export const readAllUsers = async () => {
-  const resp = await api.get('/users')
-  return resp.data
-}
-
 export const updateUser = async (id, data) => {
-  const resp = await api.put(`/users/${id}`, { teacher: data })
+  const resp = await api.put(`/users/${id}`, { user: data })
   return resp.data
 }
 
@@ -54,8 +49,19 @@ export const destroyUser = async (id) => {
   return resp.data
 }
 
-
 export const getAllRestaurants = async () => {
   const resp = await api.get('/Restaurants');
   return resp.data;
 }
+
+
+export const updateRestaurant = async (id, data) => {
+  const resp = await api.put(`/restaurants/${id}`, { restaurant: data })
+  return resp.data
+}
+
+export const createRestaurants = async (data) => {
+  const resp = await api.post('/Restaurants', { restaurant: data })
+  return resp.data
+}
+
