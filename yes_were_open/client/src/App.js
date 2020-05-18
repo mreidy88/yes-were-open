@@ -7,11 +7,12 @@ import {
   loginUser,
   registerUser,
   verifyUser,
-  removeToken
+  removeToken,
+  getAllRestaurants
 } from './services/api-helper';
 import Header from './Components/Header';
-import { getAllRestaurants } from './services/api-helper';
-import SignOut from './Components/SignOut'
+import SignOut from './Components/SignOut';
+import Layout from './Components/Layout';
 
 
 export default class App extends Component {
@@ -84,23 +85,10 @@ export default class App extends Component {
     const { setUser, clearUser } = this;
     const { user } = this.state;
     return (
+      <Layout>
       <div className="App">
         <Header>
-          <Route
-          exact
-          path="/Register"
-          render={(props) => (
-                <Register setUser={setUser} history={props.history} />
-              )}
-            />
             <Route
-              exact
-              path="/Login"
-              render={(props) => (
-                <Login setUser={setUser} history={props.history} />
-              )}
-            />
-                        <Route
               exact
               path="/SignOut"
               render={(props) => (
@@ -119,9 +107,9 @@ export default class App extends Component {
             render={(props) => (
               <Home user={user} history={props.history}/>
             )}
-            />
-          
+            />     
       </div>
+      </Layout>
     )
   }
 }
