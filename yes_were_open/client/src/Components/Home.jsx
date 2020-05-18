@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import Header from './Components/Header';
+import Header from './Header';
 import Login from './Login';
-import Register from './Register'
+import Register from './Register';
+import Restaurants from './Restaurants'
 import { getAllRestaurants } from '../services/api-helper';
-class Home extends Component {
+
+export default class Home extends Component {
     state = {
         restaurants: []
     }
@@ -34,7 +36,7 @@ class Home extends Component {
           />
         )} />
         <Route path='/Restaurants' render={() => (
-          <Show
+            <Restaurants
             restaurants={this.state.restaurants}
           />
         )} />
@@ -44,5 +46,3 @@ class Home extends Component {
     }
 }
 
-
-export default Home;

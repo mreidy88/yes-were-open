@@ -1,0 +1,7 @@
+.navOptions {
+    display: grid;
+    font-size: 25px;
+    grid-gap: 10px;
+    color: white;
+
+}

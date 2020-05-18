@@ -1,0 +1,17 @@
+.Footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    font-family: 'Roboto', cursive;
+    color: #ffffff;
+    text-align: center;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    position: fixed;
+    width: 100%;
+    background-color: #A80F0F;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+  }

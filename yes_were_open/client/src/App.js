@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
-import { Router, Switch, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Login from './Components/Login';
 import Register from './Components/Register';
-// import { Home } from './Components/Home';
+import  Home  from './Components/Home.jsx';
 import {
   loginUser,
   registerUser,
   verifyUser,
   removeToken
 } from './services/api-helper';
-import Header from './Components/Shared/Header';
+import Header from './Components/Header';
 import { getAllRestaurants } from './services/api-helper'
 
 
@@ -69,12 +68,27 @@ export default class App extends Component {
     this.setState({ restaurants })
   }
 
+  setUser = (user) =>
+    this.setState({
+      user: {
+        ...user,
+        id: user.id || user._id,
+      },
+    });
 
+  clearUser = () => this.setState({ user: null });
 
 
   render() {
+    const { setUser, clearUser } = this;
+    const { user } = this.state;
     return (
       <div className="App">
+        <Header>
+          <Route
+          exact
+          path="/Register"
+          render={(props) => (
                 <Register setUser={setUser} history={props.history} />
               )}
             />
@@ -85,6 +99,16 @@ export default class App extends Component {
                 <Login setUser={setUser} history={props.history} />
               )}
             />
+            </Header>
+          
+            <Route
+            exact
+            path="/Home"
+            render={(props) => (
+              <Home user={user} history={props.history}/>
+            )}
+            />
+          
       </div>
     )
   }

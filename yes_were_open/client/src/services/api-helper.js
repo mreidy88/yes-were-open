@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:3000'
-// https://git.heroku.com/yes-were-open-api.git
+const baseUrl = 'https://git.heroku.com/yes-were-open-api.git'
 const api = axios.create({
   baseURL: baseUrl
 })
