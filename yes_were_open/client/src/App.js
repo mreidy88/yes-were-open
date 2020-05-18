@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Login from './Components/Login'
-import Register from './Components/Register'
+import { Router, Switch, Redirect } from 'react-router-dom';
+import Login from './Components/Login';
+import Register from './Components/Register';
+// import { Home } from './Components/Home';
 import {
-  createUser,
-  readAllUsers,
-  updateUser,
-  destroyUser,
   loginUser,
   registerUser,
   verifyUser,
   removeToken
 } from './services/api-helper';
-import Header from './Components/Header';
+import Header from './Components/Shared/Header';
 import { getAllRestaurants } from './services/api-helper'
 
 
@@ -22,10 +19,6 @@ export default class App extends Component {
     super(props);
     this.state = {
       users: [],
-      userForm: {
-        name: "",
-        photo: ""
-      },
       currentUser: null,
       authFormData: {
         username: "",
@@ -56,6 +49,14 @@ export default class App extends Component {
     this.setState({ currentUser })
   }
 
+  setUser = (user) =>
+    this.setState({
+      user: {
+        ...user,
+        id: user.id || user._id,
+      },
+    });
+
   handleLogout = () => {
     localStorage.clear();
     this.setState({ currentUser: null })
@@ -69,21 +70,21 @@ export default class App extends Component {
   }
 
 
+
+
   render() {
     return (
       <div className="App">
-        <Header
-          handleLogout={this.handleLogout}
-          currentUser={this.state.currentUser}
-        />
-        <Login
-          handleLogin={this.handleLogin}
-          handleLogin={this.handleLogin}
-        />
-        <Register
-          handleRegister={this.handleRegister}
-          handleLogin={this.handleLogin}
-        />
+                <Register setUser={setUser} history={props.history} />
+              )}
+            />
+            <Route
+              exact
+              path="/Login"
+              render={(props) => (
+                <Login setUser={setUser} history={props.history} />
+              )}
+            />
       </div>
     )
   }

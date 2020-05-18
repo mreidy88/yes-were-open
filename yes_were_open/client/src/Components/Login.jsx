@@ -1,59 +1,100 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import { loginUser } from '../services/api-helper';
+import { Router } from 'react-router-dom';
 
 export default class Login extends Component {
-  state = {
-    username: '',
-    email: '',
-    password: ''
+  constructor() {
+    super();
+
+    this.state = {
+      username: '',
+      email: '',
+      password: '',
+      isError: false,
+      errorMsg: '',
+    };
   }
 
-  handleChange = (e) => {
-    const { name, value } = e.target;
+  handleChange = (event) => {
     this.setState({
-      [name]: value
+      [event.target.name]: event.target.value,
+      isError: false,
+      errorMsg: '',
     });
-  }
+  };
+
+  onLogIn = (event) => {
+    event.preventDefault();
+
+    const { history, setUser } = this.props;
+
+    loginUser(this.state)
+      .then((res) => {
+        setUser(res.user);
+      })
+      .then(() => history.push(`/restaurants`))
+      .catch((error) => {
+        console.error(error);
+        this.setState({
+          isError: true,
+          errorMsg: 'Invalid Credentials',
+          username: '',
+          email: '',
+          password: '',
+        });
+      });
+  };
+
+  renderError = () => {
+    const toggleForm = this.state.isError ? 'danger' : '';
+    if (this.state.isError) {
+      return (
+        <button type="submit" className={toggleForm}>
+          {this.state.errorMsg}
+        </button>
+      );
+    } else {
+      return <button type="submit">Login</button>;
+    }
+  };
 
   render() {
     const { username, email, password } = this.state;
+
     return (
-      <form onSubmit={(e) => {
-        e.preventDefault();
-        this.props.handleLogin(this.state);
-        this.props.history.push('/');
-      }}>
-        <h3>Login</h3>
-        <label htmlFor="username">username:</label>
+      <div className='Login'>
+      <h3>Login</h3>
+      <form onSubmit={this.onLogIn}>
+        <label>Username</label>
         <input
-          id="username"
+          required
           type="text"
           name="username"
           value={username}
+          placeholder="Enter Username"
           onChange={this.handleChange}
         />
-        <br />
-        <label htmlFor="email">email:</label>
+        <label>Email</label>
         <input
-          id="email"
-          type="text"
-          name="email"
-          value={email}
-          onChange={this.handleChange}
+           required
+           type="text"
+           name="email"
+           value={email}
+           placeholder="Enter Email Address"
+           onChange={this.handleChange}
         />
-        <br />
-        <label htmlFor="password">password:</label>
+        <label>Password</label>
         <input
-          id="password"
-          type="password"
+          required
           name="password"
           value={password}
+          type="password"
+          placeholder="Password"
           onChange={this.handleChange}
         />
-        <br />
-        <Link to='/register'>register</Link>
-        <button>Submit</button>
+        {this.renderError()}
       </form>
-    )
+      </div>
+    );
   }
 }
