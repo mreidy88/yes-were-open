@@ -10,7 +10,8 @@ import {
   removeToken
 } from './services/api-helper';
 import Header from './Components/Header';
-import { getAllRestaurants } from './services/api-helper'
+import { getAllRestaurants } from './services/api-helper';
+import SignOut from './Components/SignOut'
 
 
 export default class App extends Component {
@@ -99,6 +100,17 @@ export default class App extends Component {
                 <Login setUser={setUser} history={props.history} />
               )}
             />
+                        <Route
+              exact
+              path="/SignOut"
+              render={(props) => (
+                <SignOut
+                  user={user}
+                  clearUser={clearUser}
+                  history={props.history}
+                />
+              )}
+              />
             </Header>
           
             <Route

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { getRestaurants } from '../services/api-helper';
+import { getAllRestaurants } from '../services/api-helper';
 import { AZ, ZA } from './Sort';
 
 export default class Restaurants extends Component {
@@ -28,7 +28,7 @@ export default class Restaurants extends Component {
   }
 
   fetchRestaurants = async () => {
-    const restaurants = await getRestaurants(this.props.user.id);
+    const restaurants = await getAllRestaurants(this.props.user.id);
     this.setState({ restaurants });
   };
 

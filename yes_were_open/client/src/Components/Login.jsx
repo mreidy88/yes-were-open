@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { loginUser } from '../services/api-helper';
-import { Router } from 'react-router-dom';
 
 export default class Login extends Component {
   constructor() {

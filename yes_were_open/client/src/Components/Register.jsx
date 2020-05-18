@@ -1,6 +1,6 @@
  import React, { Component } from 'react';
 
-import { loginUser, registerUser } from '../services/user';
+import { Login, registerUser } from '../services/user';
 
 class Register extends Component {
   constructor() {
@@ -28,8 +28,8 @@ class Register extends Component {
 
     const { history, setUser } = this.props;
 
-    registerUser(this.state)
-      .then(() => loginUser(this.state))
+    Register(this.state)
+      .then(() => Login(this.state))
       .then((res) => setUser(res.user))
       .then(() => history.push('/items'))
       .catch((error) => {

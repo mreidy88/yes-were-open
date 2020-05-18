@@ -1,4 +1,3 @@
-
 const compareKey = (key) => (a, b) => {
     if (a[key] < b[key]) {
       return -1;

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const baseUrl = 'https://git.heroku.com/yes-were-open-api.git'
-const api = axios.create({
+export const api = axios.create({
   baseURL: baseUrl
 })
 
