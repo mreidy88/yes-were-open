@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-
+import Layout from './Components/Layout';
 import './RestaurantEdit.css';
 import { getRestaurant, updateRestaurant } from '../services/api-helper';
 import logo from '../images/yes_were_open.png';
@@ -55,6 +55,7 @@ export default class RestaurantEdit extends Component {
     }
 
     return (
+        <Layout user={user}>
         <div className="edit-restaurant-container">
           <div className="edit-restaurant-edit">
             <div className="image-container-edit">
@@ -101,6 +102,7 @@ export default class RestaurantEdit extends Component {
             </form>
           </div>
         </div>
+        </Layout>
     );
   }
 }

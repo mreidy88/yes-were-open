@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+// import Layout from './Components/Layout';
 import { getAllRestaurants } from '../services/api-helper';
 import { AZ, ZA } from './Sort';
 
@@ -78,6 +78,7 @@ export default class Restaurants extends Component {
     ));
 
     return (
+      // <Layout user={this.props.user}>
         <div>
         <form className="sort-container" onSubmit={this.handleSubmit}>
           <label className="sort-label" htmlFor="sort">
@@ -98,6 +99,7 @@ export default class Restaurants extends Component {
         </form>
         {this.state.restaurants && <div className="restaurants">{RESTAURANTS}</div>}
         </div>
+      // </Layout>
     );
   }
 }

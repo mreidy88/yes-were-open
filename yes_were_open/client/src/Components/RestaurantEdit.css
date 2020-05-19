@@ -111,10 +111,6 @@
     font-size: 1em;
   }
   
-  .preferred {
-    margin-bottom: 1em;
-  }
-  
   button:hover {
     background: #356094;
   }

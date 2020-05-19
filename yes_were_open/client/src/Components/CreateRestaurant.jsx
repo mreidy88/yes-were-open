@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import Layout from './Components/Layout';
 import { createRestaurants } from '../services/api-helper';
 
 export default class RestaurantCreate extends Component {
@@ -40,6 +41,7 @@ export default class RestaurantCreate extends Component {
     }
 
     return (
+      <Layout user={user}>
         <div className="create-restaurant-form">
           <form className="create-form-restaurant" onSubmit={this.handleSubmit}>
             <div className="all-item-info">
@@ -74,6 +76,7 @@ export default class RestaurantCreate extends Component {
             </button>
           </form>
         </div>
+        </Layout>
     );
   }
 }

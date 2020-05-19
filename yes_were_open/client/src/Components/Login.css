@@ -1,0 +1,60 @@
+button {
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.6em 1em;
+    border-radius: 3px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .Login {
+    align-self: center;
+    padding: 1em;
+    width: 50%;
+    height: 80%;
+    margin: 4em auto;
+    border-radius: 6px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+    background-color: #ffffff85;
+    transition: all 2s ease;
+  }
+  
+  .Login .danger {
+    background: #e57373;
+  }
+  
+  .Login h3 {
+    text-align: center;
+  }
+
+  .Login form input {
+    width: 100%;
+    padding: 0.6em 1em;
+    margin: 0.5em auto;
+    font-size: 1rem;
+    border-radius: 3px;
+  
+    outline: transparent;
+    transition: all 0.4s ease;
+  }
+  
+  .Login form input:valid {
+    border: transparent;
+  }
+  
+  .Login form button {
+    width: 50%;
+    margin: 1em auto;
+    background: #ffffff8a;
+    border: transparent;
+  }
+  
+  .Login form button:hover {
+    box-shadow: 3px 8px 16px rgba(0, 0, 0, 0.5);
+  }
+  
+  .Login form label {
+    margin-top: 0.6em;
+  }
+  
+ 

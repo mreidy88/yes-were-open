@@ -16,7 +16,7 @@
   nav {
     position: fixed;
     width: 100%;
-    background-color: #f63f13;
+    background-color: #A80F0F;
     z-index: 1;
     top: 0;
     left: 0;
@@ -25,7 +25,7 @@
   .nav {
     display: flex;
     padding: 20px 0;
-    box-shadow: 1px 1px 1px 0.3px #f75e39;
+    box-shadow: 1px 1px 1px 0.3px #A80F0F;
     width: 100%;
     flex-direction: row;
     justify-content: space-between;

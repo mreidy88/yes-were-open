@@ -98,6 +98,17 @@ export default class App extends Component {
               history={props.history}
               />
             )}
+            />         
+            <Route
+            exact
+            path="/Register"
+            render={(props) => (
+              <Register
+              user={user}
+              setUser={setUser}
+              history={props.history}
+              />
+            )}
             />
             <Route
               exact
