@@ -88,6 +88,17 @@ export default class App extends Component {
       <Layout>
       <div className="App">
         <Header>
+          <Route
+            exact
+            path="/Login"
+            render={(props) => (
+              <Login
+              user={user}
+              setUser={setUser}
+              history={props.history}
+              />
+            )}
+            />
             <Route
               exact
               path="/SignOut"

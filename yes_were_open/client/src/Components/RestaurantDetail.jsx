@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import './RestaurantDetail.css'
 import { createRestaurants } from '../services/api-helper';
 
 export default class RestaurantCreate extends Component {
@@ -42,7 +43,7 @@ export default class RestaurantCreate extends Component {
     return (
         <div className="create-restaurant-form">
           <form className="create-form-restaurant" onSubmit={this.handleSubmit}>
-            <div className="all-item-info">
+            <div className="all-restaurant-info">
               <input
                 className="input-name-restaurant"
                 placeholder="Name"
@@ -54,7 +55,7 @@ export default class RestaurantCreate extends Component {
               />
               <textarea
                 className="textarea-description-restaurant"
-                rows={5}
+                rows={3}
                 placeholder="Description"
                 value={restaurant.description}
                 name="description"

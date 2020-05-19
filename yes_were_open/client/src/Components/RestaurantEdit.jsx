@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 
-
+import './RestaurantEdit.css';
 import { getRestaurant, updateRestaurant } from '../services/api-helper';
 import logo from '../images/yes_were_open.png';
 

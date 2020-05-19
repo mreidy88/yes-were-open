@@ -1,0 +1,99 @@
+.restaurant-detail {
+    display: flex;
+    padding: 1em;
+    background-color: #ffffff;
+    opacity: 0.9;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 300px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .detail {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+  }
+  
+  .name {
+    font-size: 64px;
+    letter-spacing: 1px;
+    padding: 5px;
+  }
+  
+  .description {
+    padding: 10px;
+    letter-spacing: 0.9px;
+    margin: 1em;
+  }
+  
+  .restaurant-detail-image {
+    width: 500px;
+    padding: 0 40px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0.5em;
+  }
+  
+  .edit-button,
+  .delete-button {
+    font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-color: black;
+    color: white;
+    border: none;
+    box-shadow: 2px 2px 10px 2px #cecece;
+    cursor: pointer;
+  }
+  
+  .delete-button {
+    background-color: #A80F0F;
+  }
+  
+  .edit-link {
+    color: white;
+    height: 100%;
+    width: 100%;
+  }
+  
+  @media (max-width: 1024px) {
+    .name {
+      font-size: 32px;
+    }
+    .restaurant-detail-image {
+      width: 500px;
+      margin-top: -100px;
+      padding: 10px;
+    }
+    .restaurant-detail {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  
+  @media (max-width: 800px) {
+    .restaurant-detail-image {
+      width: 300px;
+      margin: 15px;
+      padding: 10px;
+    }
+    .restaurant-detail {
+      padding: 0px;
+      margin-top: 120px;
+    }
+    .button-container {
+      padding: 20px;
+      padding-bottom: 80px;
+    }
+    .edit-button,
+    .delete-button {
+      margin: 1em;
+    }
+  }

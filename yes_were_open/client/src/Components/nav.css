@@ -1,7 +1,112 @@
-.navOptions {
-    display: grid;
-    font-size: 25px;
-    grid-gap: 10px;
-    color: white;
-
-}
+    .logoText {
+    display: block;
+    text-align: left;
+    font-family: 'Baloo Paaji 2', cursive;
+    font-weight: 600;
+    padding-left: 0.3em;
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 1.2em;
+    color: #ffffff;
+  }
+  
+  nav {
+    position: fixed;
+    width: 100%;
+    background-color: #f63f13;
+    z-index: 1;
+    top: 0;
+    left: 0;
+  }
+  
+  .nav {
+    display: flex;
+    padding: 20px 0;
+    box-shadow: 1px 1px 1px 0.3px #f75e39;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .link {
+    padding-left: 2em;
+    margin-bottom: 0.5em;
+    text-decoration: none;
+    color: #ffffff;
+  }
+  
+  .navLinks {
+    min-width: 30vw;
+    align-items: right;
+    font-size: 1.1em;
+    padding-right: 3em;
+    font-weight: 500;
+    text-align: right;
+    margin: 0;
+  }
+  
+  .navOptions {
+    padding-right: 0;
+    margin-bottom: 0.5em;
+    max-width: 30vw;
+    text-align: right;
+  }
+  
+  .userHello {
+    max-width: 30vw;
+    align-items: right;
+    text-align: right;
+    margin: 0;
+    margin-top: 0.5em;
+    color: #ffffff;
+  }
+  
+  .nav a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  @media (max-width: 500px) {
+    nav {
+      width: 100%;
+    }
+    html {
+      font-size: 14px;
+    }
+  
+    .logoText {
+      font-size: 1.2em;
+    }
+  
+    .navLinks {
+      font-size: 0.8em;
+    }
+  
+    .navOptions {
+      margin-bottom: 0.5em;
+      text-align: left;
+      display: block;
+    }
+  
+    .link {
+      margin-bottom: 0.2em;
+      text-align: right;
+      display: block;
+    }
+  
+    .userHello {
+      margin-top: 0.5em;
+      padding: 0;
+      max-width: 40vw;
+      align-items: right;
+      text-align: right;
+    }
+  }
