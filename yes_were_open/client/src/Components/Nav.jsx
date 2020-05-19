@@ -27,7 +27,7 @@ const authenticatedOptions = (
     </NavLink>
   </>
 );
-const Nav = ({ user }) => {
+const Nav = ({ currentUser }) => {
   return (
     <nav>
       <div className="header">
@@ -35,11 +35,11 @@ const Nav = ({ user }) => {
             </div>
           <div className="navLinks">
             <div className="navOptions">
-              {user ? authenticatedOptions : unauthenticatedOptions}
+              {currentUser ? authenticatedOptions : unauthenticatedOptions}
             </div>
             <div className="userHello">
-              {user && (
-                <div className="userWelcome">Welcome {user.username}!</div>
+              {currentUser && (
+                <div className="userWelcome">Welcome {currentUser.username}!</div>
               )}
             </div>
           </div>

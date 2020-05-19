@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Nav from './Nav'
 
 export default function Header(props) {
   return (
@@ -16,6 +17,7 @@ export default function Header(props) {
           <button onClick={props.handleLoginButton}>Login/register</button>
         }
       </div>
+      <Nav  currentUser={props.currentUser}/>
     </header>
   )
 }

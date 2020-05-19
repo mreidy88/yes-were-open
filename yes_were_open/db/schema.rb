@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_12_160043) do
+ActiveRecord::Schema.define(version: 2020_05_19_170013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string "Category"
+    t.string "Cuisine_Category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "resturants", force: :cascade do |t|
+  create_table "restaurants", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "socialMedia"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_05_12_160043) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
-    t.string "password"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

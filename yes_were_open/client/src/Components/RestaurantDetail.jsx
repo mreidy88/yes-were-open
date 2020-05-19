@@ -69,6 +69,13 @@ export default class RestaurantCreate extends Component {
                 name="imgURL"
                 onChange={this.handleChange}
               />
+              <input
+                className="input-menu-link-restaurant"
+                placeholder="Menu Link"
+                value={restaurant.menuLink}
+                name="menuLink"
+                onChange={this.handleChange}
+              />
             </div>
             <button type="submit" className="submit-button-item">
               Submit

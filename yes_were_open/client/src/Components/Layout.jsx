@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 import Nav from './Nav';
-import Footer from './Footer';
 
 import './Layout.css';
 
@@ -17,7 +16,6 @@ const Layout = (props) => (
     >
       {props.children}
     </motion.div>
-    <Footer />
   </div>
 );
 

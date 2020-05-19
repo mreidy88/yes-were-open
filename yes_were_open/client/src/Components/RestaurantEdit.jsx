@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import Layout from './Components/Layout';
+// import Layout from './Components/Layout';
 import './RestaurantEdit.css';
 import { getRestaurant, updateRestaurant } from '../services/api-helper';
 import logo from '../images/yes_were_open.png';
@@ -13,6 +13,8 @@ export default class RestaurantEdit extends Component {
         name: '',
         description: '',
         imgURL: '',
+        menuLink: '',
+        sub_category: '',
       },
       updated: false,
     };
@@ -55,7 +57,7 @@ export default class RestaurantEdit extends Component {
     }
 
     return (
-        <Layout user={user}>
+        // <Layout user={user}>
         <div className="edit-restaurant-container">
           <div className="edit-restaurant-edit">
             <div className="image-container-edit">
@@ -64,7 +66,7 @@ export default class RestaurantEdit extends Component {
                 src={restaurant.imgURL || logo}
                 alt={restaurant.name}
               />
-              <form onSubmit={this.handleSubmit}>
+            <form className="edit-form" onSubmit={this.handleSubmit}>
                 <input
                   className="edit-input-restaurant-link"
                   placeholder="Restaurant URL"
@@ -73,9 +75,6 @@ export default class RestaurantEdit extends Component {
                   required
                   onChange={this.handleChange}
                 />
-              </form>
-            </div>
-            <form className="edit-form" onSubmit={this.handleSubmit}>
               <input
                 className="input-name"
                 placeholder="Name"
@@ -95,14 +94,30 @@ export default class RestaurantEdit extends Component {
                 required
                 onChange={this.handleChange}
               />
-
+               <input
+                  className="edit-input-menuLink"
+                  placeholder="Menu Link"
+                  value={restaurant.menuLink}
+                  name="menuLink"
+                  required
+                  onChange={this.handleChange}
+                />
+                <input
+                  className="edit-input-restaurant-sub_category"
+                  placeholder="sub_category"
+                  value={restaurant.sub_category}
+                  name="sub_category"
+                  required
+                  onChange={this.handleChange}
+                />
               <button type="submit" className="save-button">
                 Save
               </button>
             </form>
           </div>
         </div>
-        </Layout>
+        </div>
+        // </Layout>
     );
   }
 }

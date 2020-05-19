@@ -1,18 +1,18 @@
- import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { Login, registerUser } from '../services/user';
+import { Login, registerUser } from "../services/user";
 
 class Register extends Component {
   constructor() {
     super();
 
     this.state = {
-      username: '',
-      email: '',
-      password: '',
-      passwordConfirmation: '',
+      username: "",
+      email: "",
+      password: "",
+      passwordConfirmation: "",
       isError: false,
-      errorMsg: '',
+      errorMsg: "",
     };
   }
 
@@ -20,32 +20,31 @@ class Register extends Component {
     this.setState({
       [event.target.name]: event.target.value,
       isError: false,
-      errorMsg: '',
+      errorMsg: "",
     });
 
-  onRegisterUser = (event) => {
+  onRegisterUser = async (event) => {
     event.preventDefault();
 
-    const { history, setUser } = this.props;
+    const { history, handleRegister } = this.props;
 
-    Register(this.state)
-      .then(() => Login(this.state))
-      .then((res) => setUser(res.user))
-      .then(() => history.push('/items'))
-      .catch((error) => {
-        console.error(error);
-        this.setState({
-          email: '',
-          password: '',
-          passwordConfirmation: '',
-          isError: true,
-          errorMsg: 'Sign Up Details Invalid',
-        });
+    try {
+      await handleRegister(this.state);
+      history.push("/restaurants");
+    } catch (error) {
+      console.error(error);
+      this.setState({
+        email: "",
+        password: "",
+        passwordConfirmation: "",
+        isError: true,
+        errorMsg: "Sign Up Details Invalid",
       });
+    }
   };
 
   renderError = () => {
-    const toggleForm = this.state.isError ? 'danger' : '';
+    const toggleForm = this.state.isError ? "danger" : "";
     if (this.state.isError) {
       return (
         <button type="submit" className={toggleForm}>
@@ -65,9 +64,9 @@ class Register extends Component {
     const { email, username, password, passwordConfirmation } = this.state;
 
     return (
-        <div className = 'registering'>
+      <div className="registering">
         <h3>Register</h3>
-        <form onSubmit={this.onSignUp}>
+        <form onSubmit={this.onRegisterUser}>
           <label>Username</label>
           <input
             required

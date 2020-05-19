@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import { loginUser } from '../services/api-helper';
+import React, { Component } from "react";
+import { loginUser } from "../services/api-helper";
 
 export default class Login extends Component {
   constructor() {
     super();
 
     this.state = {
-      username: '',
-      email: '',
-      password: '',
+      username: "",
+      email: "",
+      password: "",
       isError: false,
-      errorMsg: '',
+      errorMsg: "",
     };
   }
 
@@ -18,34 +18,30 @@ export default class Login extends Component {
     this.setState({
       [event.target.name]: event.target.value,
       isError: false,
-      errorMsg: '',
+      errorMsg: "",
     });
   };
 
-  onLogIn = (event) => {
+  onLogIn = async (event) => {
     event.preventDefault();
-
-    const { history, setUser } = this.props;
-
-    loginUser(this.state)
-      .then((res) => {
-        setUser(res.user);
-      })
-      .then(() => history.push(`/restaurants`))
-      .catch((error) => {
-        console.error(error);
-        this.setState({
-          isError: true,
-          errorMsg: 'Invalid Credentials',
-          username: '',
-          email: '',
-          password: '',
-        });
+    try {
+      const { history, handleLogin } = this.props;
+      await handleLogin(this.state);
+      history.push(`/restaurants`);
+    } catch (error) {
+      console.error(error);
+      this.setState({
+        isError: true,
+        errorMsg: "Invalid Credentials",
+        username: "",
+        email: "",
+        password: "",
       });
+    }
   };
 
   renderError = () => {
-    const toggleForm = this.state.isError ? 'danger' : '';
+    const toggleForm = this.state.isError ? "danger" : "";
     if (this.state.isError) {
       return (
         <button type="submit" className={toggleForm}>
@@ -61,38 +57,38 @@ export default class Login extends Component {
     const { username, email, password } = this.state;
 
     return (
-      <div className='Login'>
-      <h3>Login</h3>
-      <form onSubmit={this.onLogIn}>
-        <label>Username</label>
-        <input
-          required
-          type="text"
-          name="username"
-          value={username}
-          placeholder="Enter Username"
-          onChange={this.handleChange}
-        />
-        <label>Email</label>
-        <input
-           required
-           type="text"
-           name="email"
-           value={email}
-           placeholder="Enter Email Address"
-           onChange={this.handleChange}
-        />
-        <label>Password</label>
-        <input
-          required
-          name="password"
-          value={password}
-          type="password"
-          placeholder="Password"
-          onChange={this.handleChange}
-        />
-        {this.renderError()}
-      </form>
+      <div className="Login">
+        <h3>Login</h3>
+        <form onSubmit={this.onLogIn}>
+          <label>Username</label>
+          <input
+            required
+            type="text"
+            name="username"
+            value={username}
+            placeholder="Enter Username"
+            onChange={this.handleChange}
+          />
+          <label>Email</label>
+          <input
+            required
+            type="text"
+            name="email"
+            value={email}
+            placeholder="Enter Email Address"
+            onChange={this.handleChange}
+          />
+          <label>Password</label>
+          <input
+            required
+            name="password"
+            value={password}
+            type="password"
+            placeholder="Password"
+            onChange={this.handleChange}
+          />
+          {this.renderError()}
+        </form>
       </div>
     );
   }

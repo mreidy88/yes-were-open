@@ -21,6 +21,7 @@ export const Register = async (credentials) => {
   export const signOut = async (user) => {
     try {
       await localStorage.clear();
+      api.defaults.headers.common.authorization = null;
       return true;
     } catch (error) {
       throw error;

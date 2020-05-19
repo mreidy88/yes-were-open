@@ -12,6 +12,7 @@ export default class RestaurantCreate extends Component {
         description: '',
         imgURL: '',
         menuLink: '',
+        sub_category: '',
       },
       created: false,
     };
@@ -56,7 +57,7 @@ export default class RestaurantCreate extends Component {
               />
               <textarea
                 className="textarea-description-restaurant"
-                rows={5}
+                rows={2}
                 placeholder="Description"
                 value={restaurant.description}
                 name="description"
@@ -70,6 +71,21 @@ export default class RestaurantCreate extends Component {
                 name="imgURL"
                 onChange={this.handleChange}
               />
+               <input
+                className="input-menu-link-restaurant"
+                placeholder="Menu Link"
+                value={restaurant.menuLink}
+                name="menu link"
+                onChange={this.handleChange}
+              />
+                <input
+                className="category"
+                placeholder="category"
+                value={restaurant.sub_category}
+                name="category"
+                onChange={this.handleChange}
+              />
+
             </div>
             <button type="submit" className="submit-button-item">
               Submit

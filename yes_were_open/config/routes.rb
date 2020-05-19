@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post "/auth/login", to: "authentication#login"
+  post "/restaurantCreate" to: "restaurants"
   resources :categories
   resources :resturants
   resources :users
