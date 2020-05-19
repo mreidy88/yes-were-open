@@ -51,7 +51,7 @@ export default class RestaurantEdit extends Component {
     const { restaurant, updated } = this.state;
 
     if (updated) {
-      return <Redirect to={`/items/detail/${this.props.match.params.id}`} />;
+      return <Redirect to={`/restaurants/detail/${this.props.match.params.id}`} />;
     }
 
     return (
