@@ -1,87 +1,23 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import './RestaurantDetail.css'
-import { createRestaurants } from '../services/api-helper';
+import React from "react";
+import { Link } from "react-router-dom"
 
-export default class RestaurantCreate extends Component {
-  constructor() {
-    super();
-    this.state = {
-      restaurant: {
-        name: '',
-        description: '',
-        imgURL: '',
-        menuLink: '',
-      },
-      created: false,
-    };
-  }
+function RestaurantDetail({ restaurant, currentUser, handleRestaurantDelete }) {
+  return (
+    <div>
+      {restaurant && (
+        <>
+          <h3>{restaurant.name}</h3>
+          <p>{restaurant.imageurl}</p>
+          <p>{restaurant.socialMedia}</p>
+          <p>{restaurant.sub_category}</p>
+          <Link to={`/editRestaurant/${restaurant.id}`}><button>Edit</button></Link>
+          <button onClick={()=>handleRestaurantDelete(restaurant.id)}>Delete</button>
 
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({
-      restaurant: {
-        ...this.state.item,
-        [name]: value,
-      },
-    });
-  };
+        </>
+      )}
 
-  handleSubmit = async (event) => {
-    event.preventDefault();
-    const created = await createRestaurants(this.state.item, this.props.user.id);
-    this.setState({ created });
-  };
-
-  render() {
-    const { restaurant, created } = this.state;
-
-    if (created) {
-      return <Redirect to={'/Restaurants'} />;
-    }
-
-    return (
-        <div className="create-restaurant-form">
-          <form className="create-form-restaurant" onSubmit={this.handleSubmit}>
-            <div className="all-restaurant-info">
-              <input
-                className="input-name-restaurant"
-                placeholder="Name"
-                value={restaurant.name}
-                name="name"
-                required
-                autoFocus
-                onChange={this.handleChange}
-              />
-              <textarea
-                className="textarea-description-restaurant"
-                rows={3}
-                placeholder="Description"
-                value={restaurant.description}
-                name="description"
-                required
-                onChange={this.handleChange}
-              />
-              <input
-                className="input-image-link-restaurant"
-                placeholder="Image Link"
-                value={restaurant.imgURL}
-                name="imgURL"
-                onChange={this.handleChange}
-              />
-              <input
-                className="input-menu-link-restaurant"
-                placeholder="Menu Link"
-                value={restaurant.menuLink}
-                name="menuLink"
-                onChange={this.handleChange}
-              />
-            </div>
-            <button type="submit" className="submit-button-item">
-              Submit
-            </button>
-          </form>
-        </div>
-    );
-  }
+    </div>
+  );
 }
+
+export default RestaurantDetail;

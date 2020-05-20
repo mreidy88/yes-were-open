@@ -49,7 +49,7 @@ export const destroyUser = async (id) => {
 }
 
 export const getAllRestaurants = async () => {
-  const resp = await api.get('/Restaurants');
+  const resp = await api.get('/restaurants');
   return resp.data;
 }
 
@@ -60,12 +60,12 @@ export const updateRestaurant = async (id, data) => {
 }
 
 export const createRestaurants = async (data) => {
-  const resp = await api.post('/Restaurants', { restaurant: data })
+  const resp = await api.post('/restaurants', { restaurant: data })
   return resp.data
 }
 
 export const destroyRestaurant = async (id) => {
-  const resp = await api.delete(`/restaurant/${id}`)
+  const resp = await api.delete(`/restaurants/${id}`)
   return resp.data
 }
 

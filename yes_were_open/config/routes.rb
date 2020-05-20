@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   post "/auth/login", to: "authentication#login"
-  # post "/restaurantCreate" to: "restaurants"
+  get "/auth/verify", to: "authentication#verify"
+  # post "/restaurantCreate", to: "restaurants"
+  # get "/restaurants"
   resources :categories
-  resources :resturants
+  resources :restaurants
   resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

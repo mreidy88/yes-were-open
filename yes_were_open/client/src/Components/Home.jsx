@@ -1,60 +1,120 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
-import Header from './Header';
-import Login from './Login';
-import Register from './Register';
-import Restaurants from './Restaurants';
-import CreateRestaurant from './CreateRestaurant';
+import React, { Component } from "react";
+import { Route } from "react-router-dom";
+import Restaurants from "./Restaurants";
+import CreateRestaurant from "./CreateRestaurant";
+import RestaurantDetail from "./RestaurantDetail";
+import RestaurantEdit from "./RestaurantEdit";
 
-import { getAllRestaurants } from '../services/api-helper';
+import {
+  getAllRestaurants,
+  createRestaurants,
+  destroyRestaurant,
+  updateRestaurant
+} from "../services/api-helper";
 
 export default class Home extends Component {
-    state = {
-        restaurants: []
-    }
+  state = {
+    restaurants: [],
+  };
 
-    componentDidMount() {
-        this.readAllRestaurants();
-    }
+  componentDidMount() {
+    this.readAllRestaurants();
+  }
 
-    CreateRestaurant = async () => {
-      const restaurant = await CreateRestaurant();
-      this.setState({ restaurant })
-    }
+  CreateRestaurant = async () => {
+    const restaurant = await CreateRestaurant();
+    this.setState({ restaurant });
+  };
 
-    readAllRestaurants = async () => {
+  readAllRestaurants = async () => {
     const restaurants = await getAllRestaurants();
-    this.setState({ restaurants })
-    }
-    render() {
-        return (
-            <div>
-            <Header>
-            <Route path='/login' render={(props) => (
-             <Login
-            {...props}
-            handleLogin={this.props.handleLogin}
-          />
-        )} />
-        <Route path='/register' render={(props) => (
-          <Register
-            {...props}
-            handleRegister={this.props.handleRegister}
-          />
-        )} />
-        <Route path='/Restaurants' render={() => (
-            <Restaurants
-            restaurants={this.state.restaurants}
-          />
-        )} />
-          <Route path='/CreateRestaurant' render={() => (
-            <CreateRestaurant
-            CreateRestaurant={this.state.restaurant}
-          />
-        )} />
-        </Header>
-            </div>
-        )
-    }
-}
+    this.setState({ restaurants });
+  };
 
+  handleRestaurantCreate = async (restaurantsData) => {
+    const newRestaurant = await createRestaurants(
+      restaurantsData,
+      this.props.currentUser.id
+    );
+    this.setState((prevState) => ({
+      restaurants: [...prevState.restaurants, newRestaurant],
+    }));
+    this.props.history.push("/Restaurants");
+  };
+
+  handleRestaurantDelete = async (id) => {
+    await destroyRestaurant(id);
+    this.setState((prevState) => ({
+      restaurants: prevState.restaurants.filter(
+        (restaurant) => restaurant.id !== id
+      ),
+    }));
+    this.props.history.push("/Restaurants");
+  };
+
+  handleRestaurantEdit = async (id, data) => {
+    const updatedRestaurant = await updateRestaurant(id, data);
+    this.setState((prevState) => ({
+      restaurants: prevState.restaurants.map((restaurant) =>
+        restaurant.id === parseInt(id) ? updatedRestaurant : restaurant
+      ),
+    }));
+    this.props.history.push(`/Restaurants/${id}`);
+  };
+
+  render() {
+    return (
+      <div className="header-margin">
+        <Route
+          exact
+          path="/Restaurants"
+          render={(props) => (
+            <Restaurants {...props} restaurants={this.state.restaurants} />
+          )}
+        />
+        <Route
+          path="/CreateRestaurant"
+          render={() => (
+            <CreateRestaurant
+              handleRestaurantCreate={this.handleRestaurantCreate}
+              currentUser={this.props.currentUser}
+            />
+          )}
+        />
+        <Route
+          path="/Restaurants/:id"
+          render={(props) => {
+            const restaurantId = props.match.params.id;
+            const restaurant = this.state.restaurants.find((restaurant) => {
+              return restaurant.id === parseInt(restaurantId);
+            });
+            return (
+              <RestaurantDetail
+                restaurant={restaurant}
+                currentUser={this.props.currentUser}
+                handleRestaurantDelete={this.handleRestaurantDelete}
+              />
+            );
+          }}
+        />
+        <Route
+          path="/editRestaurant/:id"
+          render={(props) => {
+            const restaurantId = props.match.params.id;
+            const restaurant = this.state.restaurants.find((restaurant) => {
+              return restaurant.id === parseInt(restaurantId);
+            });
+            return (
+              <RestaurantEdit
+                restaurantId={restaurantId}
+                restaurant={restaurant}
+                currentUser={this.props.currentUser}
+                handleRestaurantEdit={this.handleRestaurantEdit}
+              />
+            );
+          }}
+        />
+      </div>
+    );
+  }
+}

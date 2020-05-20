@@ -68,27 +68,40 @@ export default class App extends Component {
       },
     });
 
+  verifyUser = async () => {
+    const currentUser = await verifyUser();
+    this.setState({ currentUser });
+  };
+
   clearUser = () => this.setState({ currentUser: null });
 
   render() {
-    const { handleRegister, clearUser, handleLogin} = this;
+    const { handleRegister, clearUser, handleLogin } = this;
     const { currentUser } = this.state;
     return (
       <div className="App">
         {/* <Layout /> */}
-        <Header currentUser={currentUser}/>
+        <Header currentUser={currentUser} />
         <Route
           exact
           path="/Login"
           render={(props) => (
-            <Login currentUser={currentUser} handleLogin={handleLogin} history={props.history} />
+            <Login
+              currentUser={currentUser}
+              handleLogin={handleLogin}
+              history={props.history}
+            />
           )}
         />
         <Route
           exact
           path="/Register"
           render={(props) => (
-            <Register currentUser={currentUser} handleRegister={handleRegister} history={props.history} />
+            <Register
+              currentUser={currentUser}
+              handleRegister={handleRegister}
+              history={props.history}
+            />
           )}
         />
         <Route
@@ -103,12 +116,18 @@ export default class App extends Component {
           )}
         />
         {/* </Header> */}
-
-        <Route
-          exact
-          path="/Home"
-          render={(props) => <Home currentUser={currentUser} history={props.history} />}
-        />
+        {currentUser && (
+          <Route
+            path="/"
+            render={(props) => (
+              <Home
+                {...props}
+                currentUser={currentUser}
+                history={props.history}
+              />
+            )}
+          />
+        )}
 
         <Footer />
       </div>
