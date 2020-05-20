@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import Layout from './Components/Layout';
+// import Layout from './Components/Layout';
 import { createRestaurants } from '../services/api-helper';
 
 export default class RestaurantCreate extends Component {
@@ -12,10 +12,24 @@ export default class RestaurantCreate extends Component {
         description: '',
         imgURL: '',
         menuLink: '',
+        socialMedia: '',
         sub_category: '',
       },
       created: false,
     };
+  }
+  componentDidMount() {
+    let { id } = this.props;
+    const restaurant = createRestaurants(id);
+    this.setState({
+        restaurant: {
+          name: restaurant.name,
+          description: restaurant.description,
+          imgURL: restaurant.imgURL,
+          menuLink: restaurant.menuLink,
+          sub_category: restaurant.sub_category
+      },
+    });
   }
 
   handleChange = (event) => {
@@ -28,9 +42,14 @@ export default class RestaurantCreate extends Component {
     });
   };
 
+  // onCreateRestaurant = async (event) => {
+  //   const restaurant = await createRestaurants(this.state.restaurant)
+  //   event.preventDefault();
+  // }
+
   handleSubmit = async (event) => {
     event.preventDefault();
-    const created = await createRestaurants(this.state.item, this.props.user.id);
+    const created = await createRestaurants(this.state.restaurant, this.props.user.id);
     this.setState({ created });
   };
 
@@ -42,8 +61,7 @@ export default class RestaurantCreate extends Component {
     }
 
     return (
-      <Layout user={user}>
-        <div className="create-restaurant-form">
+        <div className="create-restaurant-form" >
           <form className="create-form-restaurant" onSubmit={this.handleSubmit}>
             <div className="all-item-info">
               <input
@@ -78,6 +96,13 @@ export default class RestaurantCreate extends Component {
                 name="menu link"
                 onChange={this.handleChange}
               />
+                             <input
+                className="input-social-link-restaurant"
+                placeholder="Social Media link"
+                value={restaurant.socialMedia}
+                name="social media"
+                onChange={this.handleChange}
+              />
                 <input
                 className="category"
                 placeholder="category"
@@ -85,14 +110,12 @@ export default class RestaurantCreate extends Component {
                 name="category"
                 onChange={this.handleChange}
               />
-
             </div>
             <button type="submit" className="submit-button-item">
               Submit
             </button>
           </form>
         </div>
-        </Layout>
     );
   }
 }

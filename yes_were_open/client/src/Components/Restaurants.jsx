@@ -17,32 +17,21 @@ export default class Restaurants extends Component {
   componentDidMount() {
     const { user } = this.props;
     if (user) {
-      this.fetchRestaurants();
+      this.getRestaurants();
     }
   }
 
   componentDidUpdate({ user }) {
     if (!user && this.props.user) {
-      this.fetchRestaurants();
+      this.getRestaurants();
     }
   }
 
-  fetchRestaurants = async () => {
+  getRestaurants = async () => {
     const restaurants = await getAllRestaurants(this.props.user.id);
     this.setState({ restaurants });
   };
 
-  handleSearchChange = (event) => {
-    const filter = () => {
-      const filteredRestaurants = this.state.restaurants.filter((restaurant) => {
-        return restaurant.name
-          .toLowerCase()
-          .includes(this.state.filterValue.toLowerCase());
-      });
-      this.setState({ filteredRestaurants });
-    };
-    this.setState({ filterValue: event.target.value }, filter);
-  };
 
   handleSortChange = (event) => {
     this.setState({ selectValue: event.target.value });
@@ -51,12 +40,12 @@ export default class Restaurants extends Component {
     switch (input) {
       case 'name-ascending':
         this.setState({
-          items: AZ(restaurants),
+          restaurants: AZ(restaurants),
         });
         break;
       case 'name-descending':
         this.setState({
-          items: ZA(restaurants),
+          restaurants: ZA(restaurants),
         });
         break;
     }
@@ -80,6 +69,8 @@ export default class Restaurants extends Component {
     return (
       // <Layout user={this.props.user}>
         <div>
+        <div className="restaurant list">
+
         <form className="sort-container" onSubmit={this.handleSubmit}>
           <label className="sort-label" htmlFor="sort">
             Sort By:
@@ -99,7 +90,10 @@ export default class Restaurants extends Component {
         </form>
         {this.state.restaurants && <div className="restaurants">{RESTAURANTS}</div>}
         </div>
+        </div>
       // </Layout>
     );
   }
 }
+
+// https://www.w3schools.com/html/html_entities.asp to check if &nbsp is correct

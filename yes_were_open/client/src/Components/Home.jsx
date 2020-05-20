@@ -3,7 +3,9 @@ import { Route } from 'react-router-dom';
 import Header from './Header';
 import Login from './Login';
 import Register from './Register';
-import Restaurants from './Restaurants'
+import Restaurants from './Restaurants';
+import CreateRestaurant from './CreateRestaurant';
+
 import { getAllRestaurants } from '../services/api-helper';
 
 export default class Home extends Component {
@@ -13,6 +15,11 @@ export default class Home extends Component {
 
     componentDidMount() {
         this.readAllRestaurants();
+    }
+
+    CreateRestaurant = async () => {
+      const restaurant = await CreateRestaurant();
+      this.setState({ restaurant })
     }
 
     readAllRestaurants = async () => {
@@ -38,6 +45,11 @@ export default class Home extends Component {
         <Route path='/Restaurants' render={() => (
             <Restaurants
             restaurants={this.state.restaurants}
+          />
+        )} />
+          <Route path='/CreateRestaurant' render={() => (
+            <CreateRestaurant
+            CreateRestaurant={this.state.restaurant}
           />
         )} />
         </Header>

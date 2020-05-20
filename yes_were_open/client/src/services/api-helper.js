@@ -64,3 +64,8 @@ export const createRestaurants = async (data) => {
   return resp.data
 }
 
+export const destroyRestaurant = async (id) => {
+  const resp = await api.delete(`/restaurant/${id}`)
+  return resp.data
+}
+

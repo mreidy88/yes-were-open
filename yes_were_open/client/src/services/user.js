@@ -1,4 +1,5 @@
 import { api } from './api-helper';
+
 export const Register = async (credentials) => {
     try {
       const resp = await api.post('/Register', credentials);
